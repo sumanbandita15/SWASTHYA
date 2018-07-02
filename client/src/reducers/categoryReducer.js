@@ -1,14 +1,26 @@
+import {
+  FETCH_CATEGORY_SUCCESS,
+  SELECT_CATEGORY
+} from '../actions';
+
 const initialState = {
-  category: ['yoga']
+  category: ['yoga'],
+  selected: ''
 };
 
 const categoryReducer = (state = initialState, action) => {
 
   switch(action.type) {
-    case 'FETCH_CATEGORY_SUCCESS':
+    case FETCH_CATEGORY_SUCCESS:
       return {
         ...state,
         category: action.category
+      };
+
+    case SELECT_CATEGORY:
+      return {
+        ...state,
+        selected: action.selected
       };
 
     default: 
