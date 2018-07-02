@@ -1,0 +1,19 @@
+.App-logo {  
+  height: 100px;  
+}
+
+.App-header {
+  background-color: rgb(78, 60, 243);
+  height: 150px;  
+  width: 100%;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+

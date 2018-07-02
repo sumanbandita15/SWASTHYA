@@ -22,8 +22,11 @@ app.use(
   })
 );
 
-app.get('/api/', (req,res,next) => {
-  
+app.get('/category', (req,res,next) => {
+  let category = ['yoga','breathing excercises'];
+  res.json({
+    category
+  });
     
 });
 
