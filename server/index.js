@@ -22,12 +22,20 @@ app.use(
   })
 );
 
-app.get('/category', (req,res,next) => {
+app.get('/category/:userId', (req,res,next) => {
   let category = ['yoga','breathing excercises'];
   res.json({
     category
-  });
-    
+  });    
+});
+
+app.get('/graph/:userId',(req,res,next) => {
+  let coordinates = [
+    [1,10],
+    [2,20],
+    [3,30]
+  ];
+  res.json({coordinates});
 });
 
 function runServer(port = PORT) {

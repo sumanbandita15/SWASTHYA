@@ -3,12 +3,13 @@ import './Category.css';
 import {connect} from 'react-redux';
 import {selectCategory} from '../actions';
 
-class Category extends React.Component{      
-  
+class Category extends React.Component{        
   onChange(e){
     this.props.dispatch(selectCategory(e.target.value));
   }
+
   render() {
+    
     const values = this.props.category.map((category,i) => (
       <option value={category} key= {i}> {category} </option>
     ));
@@ -22,7 +23,7 @@ class Category extends React.Component{
 }
 
 const mapStateToProps = state => ({
- category: state.categoryReducer.category 
+   category: state.categoryReducer.category 
 });
 
 export default connect(mapStateToProps)(Category);
