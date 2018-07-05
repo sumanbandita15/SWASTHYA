@@ -5,7 +5,10 @@ import './App.css';
 import { connect } from 'react-redux'
 import { fetchCategory,fetchGraph } from './actions'
 import Graph from './components/Graph';
-import ShowGraph from './components/ShowGraph'
+import ShowGraph from './components/ShowGraph';
+import Dashboard from './components/Dashboard';
+import Records from './components/Records';
+import AddFitnessRoutine from './components/AddFitnessRoutine';
 
 class App extends Component {
 
@@ -17,12 +20,12 @@ class App extends Component {
   render() {
     return (
       <div className="dashboard">        
-          <Logo />          
-          <label> CATEGORY: </label>
-          <Category />              
-          <input type='button' value="ADD A NEW CATEGORY" />
-          <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" />
-          <ShowGraph/>   
+          <Logo />                    
+          <Category />           
+          <Dashboard />
+          <Records />           
+          <ShowGraph/>
+          <AddFitnessRoutine />                         
           <Graph />
       </div>
     );

@@ -4,11 +4,14 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 
+const categoryRouter = require('./routes/category');
 const { PORT, CLIENT_ORIGIN } = require('./config');
 const { dbConnect } = require('./db-mongoose');
-// const {dbConnect} = require('./db-knex');
 
 const app = express();
+
+// Parse request body
+app.use(express.json());
 
 app.use(
   morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
@@ -22,12 +25,9 @@ app.use(
   })
 );
 
-app.get('/category/:userId', (req,res,next) => {
-  let category = ['yoga','breathing excercises'];
-  res.json({
-    category
-  });    
-});
+
+// Mount routers
+app.use('/category', categoryRouter);
 
 app.get('/graph/:userId',(req,res,next) => {
   let coordinates = [

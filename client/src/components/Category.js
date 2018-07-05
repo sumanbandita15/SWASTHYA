@@ -15,9 +15,12 @@ class Category extends React.Component{
     ));
 
     return (
-      <select onChange={e => this.onChange(e)}>
-        {values}
-      </select>
+      <span>
+        <label> CATEGORY: </label>
+        <select onChange={e => this.onChange(e)}>
+          {values}
+        </select>
+      </span>      
     );
   }  
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Graph.css';
 import '../../node_modules/react-vis/dist/style.css';
 import {XYPlot, LineSeries,XAxis,YAxis} from 'react-vis';
 
@@ -17,7 +18,7 @@ class Graph extends Component {
       {x: 9, y: 0}
     ];
     return (
-      <div className="App">
+      <div className="Graph">
         <XYPlot height={500} width={900}>
           <XAxis  title="X" position="start"/>
           <YAxis  title="Y" />

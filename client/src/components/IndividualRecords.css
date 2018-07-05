@@ -1,0 +1,9 @@
+.IndividualRecords{
+  background-color: lightgoldenrodyellow;
+  padding:5px;
+  margin: 5px;  
+}
+
+div .labelName{
+  font-weight: bold;
+}
