@@ -9,6 +9,7 @@ import ShowGraph from './components/ShowGraph';
 import Dashboard from './components/Dashboard';
 import Records from './components/Records';
 import AddFitnessRoutine from './components/AddFitnessRoutine';
+import AddOrUpdateCategory from './components/AddOrUpdateCategory';
 
 class App extends Component {
 
@@ -25,7 +26,14 @@ class App extends Component {
           <Dashboard />
           <Records />           
           <ShowGraph/>
-          <AddFitnessRoutine />                         
+          <div className="container"> 
+            <div className="FitnessRoutine">
+              <AddFitnessRoutine />
+            </div>               
+            <div className="Category">
+              <AddOrUpdateCategory />
+            </div>            
+          </div>
           <Graph />
       </div>
     );

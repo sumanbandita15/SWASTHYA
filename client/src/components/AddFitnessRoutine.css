@@ -1,9 +1,13 @@
 .AddFitnessRoutine{
-  border: 1px solid black;
-  width:50%;
+  border: 1px solid black;  
   margin-left: 5%;
   padding: 5px;
-  text-align: left;
+  text-align: left;  
+  height: 30%;
+}
+
+.AddFitnessRoutine input[type="button"]{
+  margin-left: 40%;  
 }
 
  

@@ -7,7 +7,7 @@ export default class URL extends Component {
     return (
       <div className="URL">
         <label> URL (Optional):</label>
-        <input type="text"></input>
+        <input type="url"></input>
       </div>
     );
   }

@@ -1,0 +1,18 @@
+.AddOrUpdateCategory{
+  border: 1px solid black;  
+}
+
+.AddOrUpdateCategory > .OverFlow{
+  background-color: rgb(120, 206, 235);
+  width: 210px;
+  height: 210px;
+  overflow: scroll;
+  margin-left: auto;  
+  margin-right: auto;
+  margin-top: 5px;
+}
+
+.AddOrUpdateCategory label{
+  font-weight: bold;  
+  
+}

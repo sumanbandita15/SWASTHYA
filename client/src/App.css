@@ -5,3 +5,19 @@
 .dashboard input{
   margin: 20px;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(36, 1fr);  
+}
+
+.FitnessRoutine {
+  grid-column: span 20;
+  padding-right: 20px;
+}
+
+.Category {
+  grid-column: span 15;
+  float: right;
+}
+
