@@ -23,8 +23,7 @@ class App extends Component {
       <div className="dashboard">        
           <Logo />                    
           <Category />           
-          <Dashboard />
-          <Records />           
+          <Dashboard />          
           <ShowGraph/>
           <div className="container"> 
             <div className="FitnessRoutine">
@@ -32,7 +31,10 @@ class App extends Component {
             </div>               
             <div className="Category">
               <AddOrUpdateCategory />
-            </div>            
+            </div>  
+            <div className="Records">
+              <Records />           
+            </div>           
           </div>
           <Graph />
       </div>

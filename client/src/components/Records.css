@@ -1,7 +1,6 @@
-.Records{
-  border: 1px solid black;
-  width: 30%;
+.RecordsComponent{
+  border: 1px solid black;  
   padding-right: 0;
-  float: right;
+  float: right;  
   overflow: scroll;
 }

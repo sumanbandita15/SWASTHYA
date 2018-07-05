@@ -6,7 +6,7 @@ export default class Records extends Component {
 
   render() {
     return (
-      <div className="Records">
+      <div className="RecordsComponent">
         <h3>RECORDS:</h3>
         <IndividualRecords />
         <IndividualRecords />
