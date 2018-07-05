@@ -8,8 +8,7 @@ class Category extends React.Component{
     this.props.dispatch(selectCategory(e.target.value));
   }
 
-  render() {    
-    console.log(this.props);
+  render() {        
     const values = this.props.category.map((category) => (
       <option value={category.value} key={category.id} > {category.category} </option>
     ));

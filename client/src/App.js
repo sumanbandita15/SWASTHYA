@@ -14,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchCategory('333333333333333333333301'));
-    this.props.dispatch(fetchGraph());
+    this.props.dispatch(fetchGraph('333333333333333333333301'));
   }
 
   render() {

@@ -7,7 +7,8 @@ const recordSchema = new mongoose.Schema({
   url: { type: String },//{type: mongoose.Schema.Types.Url},
   title: { type: String, required: true },
   rating: {type: Number, required: true},
-  description: { type: String, required: true }  
+  description: { type: String, required: true },
+  userId:  { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
 // Add `createdAt` and `updatedAt` fields

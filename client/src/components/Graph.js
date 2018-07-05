@@ -2,21 +2,12 @@ import React, { Component } from 'react';
 import './Graph.css';
 import '../../node_modules/react-vis/dist/style.css';
 import {XYPlot, LineSeries,XAxis,YAxis} from 'react-vis';
+import {connect} from 'react-redux';
 
 class Graph extends Component {
-  render() {
-    const data = [
-      {x: 0, y: 8},
-      {x: 1, y: 5},
-      {x: 2, y: 4},
-      {x: 3, y: 9},
-      {x: 4, y: 1},
-      {x: 5, y: 7},
-      {x: 6, y: 6},
-      {x: 7, y: 3},
-      {x: 8, y: 2},
-      {x: 9, y: 0}
-    ];
+  render() {    
+    const data = this.props.coordinates;
+
     return (
       <div className="Graph">
         <XYPlot height={500} width={900}>
@@ -29,4 +20,9 @@ class Graph extends Component {
   }
 }
 
-export default Graph;
+
+const mapStateToProps = state => ({
+  coordinates: state.graphReducer.coordinates
+});
+
+export default connect(mapStateToProps)(Graph);

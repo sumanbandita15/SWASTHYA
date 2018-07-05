@@ -5,6 +5,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const categoryRouter = require('./routes/category');
+const recordRouter = require('./routes/record');
+const graphRouter = require('./routes/graph');
 const { PORT, CLIENT_ORIGIN } = require('./config');
 const { dbConnect } = require('./db-mongoose');
 
@@ -28,15 +30,9 @@ app.use(
 
 // Mount routers
 app.use('/category', categoryRouter);
+app.use('/record', recordRouter);
+app.use('/graph', graphRouter);
 
-app.get('/graph/:userId',(req,res,next) => {
-  let coordinates = [
-    [1,10],
-    [2,20],
-    [3,30]
-  ];
-  res.json({coordinates});
-});
 
 function runServer(port = PORT) {
   const server = app
