@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AddFitnessRoutine.css';
 import Category from './Category';
 import URL from './URL';
+import Title from './Title';
 
 export default class AddFitnessRoutine extends Component {
   render() { 
@@ -9,7 +10,8 @@ export default class AddFitnessRoutine extends Component {
     return (
       <div className="AddFitnessRoutine">
         <Category />    
-        <URL />    
+        <URL />  
+        <Title />  
       </div>
     );
   }

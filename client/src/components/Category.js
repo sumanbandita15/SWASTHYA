@@ -8,12 +8,12 @@ class Category extends React.Component{
     this.props.dispatch(selectCategory(e.target.value));
   }
 
-  render() {
-    
-    const values = this.props.category.map((category,i) => (
-      <option value={category} key= {i}> {category} </option>
+  render() {    
+    console.log(this.props);
+    const values = this.props.category.map((category) => (
+      <option value={category.value} key={category.id} > {category.category} </option>
     ));
-
+    
     return (
       <span>
         <label> CATEGORY: </label>
@@ -26,7 +26,7 @@ class Category extends React.Component{
 }
 
 const mapStateToProps = state => ({
-   category: state.categoryReducer.category 
+   category: state.categoryReducer.category
 });
 
 export default connect(mapStateToProps)(Category);

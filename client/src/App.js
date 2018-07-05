@@ -13,7 +13,7 @@ import AddFitnessRoutine from './components/AddFitnessRoutine';
 class App extends Component {
 
   componentDidMount() {
-    this.props.dispatch(fetchCategory());
+    this.props.dispatch(fetchCategory('333333333333333333333301'));
     this.props.dispatch(fetchGraph());
   }
 

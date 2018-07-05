@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-export default class URL extends Component {
+export default class Title extends Component {
   render() { 
 
     return (
       <div className="URL">
-        <label> URL (Optional):</label>
+        <label>TITLE:</label>
         <input type="text"></input>
       </div>
     );

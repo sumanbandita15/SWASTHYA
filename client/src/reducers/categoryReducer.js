@@ -4,7 +4,7 @@ import {
 } from '../actions';
 
 const initialState = {
-  category: ['yoga'],
+  category: [''],
   selected: ''
 };
 

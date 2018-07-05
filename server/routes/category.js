@@ -9,9 +9,9 @@ const router = express.Router();
 
 
 /* ========== GET/READ ALL CATEGORIES FOR A USERID ========== */
-router.get('/', (req, res, next) => {  
-  const userId = req.query.userId;  
-
+router.get('/', (req, res, next) => {   
+  const userId = req.query.userId;    
+  console.log('got here', userId);   
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     const err = new Error('The `id` is not valid');
     err.status = 400;
@@ -37,7 +37,7 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   const userId = req.query.userId;
   //const userId = req.user.id;
-
+  
   if (!(mongoose.Types.ObjectId.isValid(id) || mongoose.Types.ObjectId.isValid(userId))){
     const err = new Error('The `id` is not valid');
     err.status = 400;

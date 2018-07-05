@@ -24,10 +24,10 @@ export const fetchGraphSuccess = (coordinates) => {
   }
 };
 
-export const fetchCategory = () => dispatch => {  
-      fetch(`${API_BASE_URL}/category/:userId`)
+export const fetchCategory = (userId) => dispatch => {    
+      fetch(`${API_BASE_URL}/category/?userId=${userId}`)
         .then(response => response.json())
-        .then(obj => dispatch(fetchCategorySuccess(obj.category)))
+        .then(obj => dispatch(fetchCategorySuccess(obj)))
         .catch(err => console.log(err));
 };
 
