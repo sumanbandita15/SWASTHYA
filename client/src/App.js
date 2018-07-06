@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard';
 import Records from './components/Records';
 import AddFitnessRoutine from './components/AddFitnessRoutine';
 import AddOrUpdateCategory from './components/AddOrUpdateCategory';
+import SignUpForm from './components/SignUpForm';
 
 class App extends Component {
 
@@ -20,7 +21,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="dashboard">        
+      <div className="dashboard">  
+          <SignUpForm />      
           <Logo />                    
           <Category />           
           <Dashboard />          
