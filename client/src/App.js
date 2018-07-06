@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchCategory,fetchGraph } from './actions';
 import Dashboard from './components/Dashboard';
 import SignUpForm from './components/SignUpForm';
+import LoginForm from './components/LoginForm';
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
       <Router>  
         <div>      
           <Route exact path="/signUp"  component={SignUpForm} />            
+          <Route exact path="/login"  component={LoginForm} />            
           <Route exact path="/dashboard"  component={Dashboard} />        
         </div>
       </Router>
