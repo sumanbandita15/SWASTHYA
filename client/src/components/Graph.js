@@ -10,9 +10,9 @@ class Graph extends Component {
 
     return (
       <div className="Graph">
-        <XYPlot height={500} width={900}>
-          <XAxis  title="X" position="start"/>
-          <YAxis  title="Y" />
+        <XYPlot height={500} width={900} xType="ordinal" yDomain={[0,100]}>
+          <XAxis  title="Date" />
+          <YAxis  title="Rating" />
           <LineSeries data={data} />
         </XYPlot>
       </div>
