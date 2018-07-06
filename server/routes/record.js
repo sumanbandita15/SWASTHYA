@@ -6,7 +6,9 @@ const mongoose = require('mongoose');
 const Record = require('../models/record');
 
 const router = express.Router();
-
+const passport = require('passport');
+// Protect endpoints using JWT Strategy
+router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }));
 /* ========== GET/READ ALL CATEGORIES FOR A USERID ========== */
 router.get('/', (req, res, next) => {   
   const {category, limit, userId} = req.query;

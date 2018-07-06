@@ -24,15 +24,15 @@ export const fetchGraphSuccess = (coordinates) => {
   }
 };
 
-export const fetchCategory = (userId) => dispatch => {    
-      fetch(`${API_BASE_URL}/category/?userId=${userId}`)
+export const fetchCategory = () => dispatch => {    
+      fetch(`${API_BASE_URL}/category/`)
         .then(response => response.json())
         .then(obj => dispatch(fetchCategorySuccess(obj)))
         .catch(err => console.log(err));
 };
 
-export const fetchGraph = (userId) => dispatch => {
-  fetch(`${API_BASE_URL}/graph/?userId=${userId}`)
+export const fetchGraph = () => dispatch => {
+  fetch(`${API_BASE_URL}/graph/`)
     .then(response => response.json())
     .then(obj => dispatch(fetchGraphSuccess(obj.coordinates)))
     .catch(err => console.log(err));

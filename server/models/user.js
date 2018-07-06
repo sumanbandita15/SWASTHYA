@@ -5,16 +5,17 @@ const mongoose = require('mongoose');
 
 // ===== Define UserSchema & UserModel =====
 const userSchema = new mongoose.Schema({
-  fullname: { type: String, default: '' },
-  username: { type: String, required: true, unique: true },
+  firstname: { type: String,required: true, default: 'test' },
+  lastname: { type: String,required: true, default: 'test' },
+  email: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 });
 
-// Customize output for `res.json(data)`, `console.log(data)` etc.
 userSchema.set('toObject', {
   virtuals: true,     // include built-in virtual `id`
   versionKey: false,  // remove `__v` version key
   transform: (doc, ret) => {
+    ret.userId = doc._id;
     delete ret._id; // delete `_id`
     delete ret.password;
   }

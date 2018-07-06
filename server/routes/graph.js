@@ -6,9 +6,11 @@ const mongoose = require('mongoose');
 const Graph = require('../models/record');
 
 const router = express.Router();
-
+const passport = require('passport');
+// Protect endpoints using JWT Strategy
+router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }));
 router.get('/',(req,res,next) => {
-  const userId = req.query.userId;
+  const userId = req.user.userId;
   let coordinates = [
     {x: '26-7', y: 8},
     {x: '28-7', y: 5},

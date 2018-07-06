@@ -6,9 +6,11 @@ const { DATABASE_URL } = require('../config');
 
 const Category = require('../models/category');
 const Record = require('../models/record');
+const User = require('../models/user');
 
-const seedCategory = require('../db/seed/category');
-const seedRecord = require('../db/seed/record');
+const seedCategory = require('../db/seed/categories');
+const seedRecord = require('../db/seed/records');
+const seedUser = require('../db/seed/users');
 
 console.log(`Connecting to mongodb at ${DATABASE_URL}`);
 mongoose.connect(DATABASE_URL)
@@ -19,6 +21,8 @@ mongoose.connect(DATABASE_URL)
   .then(() => {
     console.info('Seeding Database');
     return Promise.all([
+      User.insertMany(seedUser),      
+      User.createIndexes(),
       Category.insertMany(seedCategory),      
       Category.createIndexes(),
       Record.insertMany(seedRecord),      
