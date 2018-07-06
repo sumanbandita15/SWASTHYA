@@ -3,17 +3,19 @@ import {reduxForm, Field, focus} from 'redux-form';
 import {required, nonEmpty,email, passwordMatch} from './validation';
 import Input from './validation/Input';
 import Logo from './Logo';
+import './SignUpForm.css';
 
 export class SignUpForm extends React.Component {
-    onSubmit(values) {
-        console.log(values);
+    onSubmit(values) {        
+        console.log(values);        
+        this.props.history.push(`/dashboard`);
     }
     render() {
         return (
             <form
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
-                )}>
+                )} className="signUpForm">
                 <Logo />
                 <label htmlFor="firstName">First Name: </label>
                 <Field name="firstName" id="firstName" type="text" component={Input} validate={[required, nonEmpty]}/>

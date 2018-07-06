@@ -1,0 +1,28 @@
+.dashboard{
+  text-align: center;
+}
+
+.dashboard input{
+  margin: 10px;
+}
+
+.container {
+  display: grid;
+  width: 100%;    
+  grid-template-columns: repeat(45, 1fr);  
+}
+
+.FitnessRoutine {
+  grid-column: span 15;
+  padding-right: 20px;
+}
+
+.Category {
+  grid-column: span 15;  
+  padding-right: 20px;
+}
+
+.Records{
+  grid-column: span 15;
+  float: right;  
+}
