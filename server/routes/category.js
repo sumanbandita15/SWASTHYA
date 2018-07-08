@@ -11,6 +11,7 @@ const passport = require('passport');
 // Protect endpoints using JWT Strategy
 router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }));
 /* ========== GET/READ ALL CATEGORIES FOR A USERID ========== */
+
 router.get('/', (req, res, next) => {  
   const userId = req.user.userId;      
   if (!mongoose.Types.ObjectId.isValid(userId)) {

@@ -6,9 +6,16 @@ import ShowGraph from './ShowGraph';
 import Records from './Records';
 import AddFitnessRoutine from './AddFitnessRoutine';
 import AddOrUpdateCategory from './AddOrUpdateCategory';
+import { fetchCategory,fetchGraph } from '../actions';
+import { connect } from 'react-redux';
 import './Dashboard.css';
 
-export default class Dashboard extends Component {
+export class Dashboard extends Component {
+  componentDidMount() {
+    this.props.dispatch(fetchCategory());
+    this.props.dispatch(fetchGraph());
+  }
+
   render() {
     return (
       <div className="dashboard">            
@@ -35,3 +42,10 @@ export default class Dashboard extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    state
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard);

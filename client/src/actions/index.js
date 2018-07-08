@@ -1,4 +1,5 @@
 import { API_BASE_URL } from '../config';
+import {normalizeResponseErrors} from './utils';
 
 export const FETCH_CATEGORY_SUCCESS = 'FETCH_CATEGORY_SUCCESS';
 export const fetchCategorySuccess = (category) => {
@@ -24,15 +25,30 @@ export const fetchGraphSuccess = (coordinates) => {
   }
 };
 
-export const fetchCategory = () => dispatch => {    
-      fetch(`${API_BASE_URL}/category/`)
+export const fetchCategory = () => (dispatch,getState) => {    
+  const authToken = getState().auth.authToken;
+    return  fetch(`${API_BASE_URL}/category/`, {
+      method: 'GET',
+      headers: {
+          // Provide our auth token as credentials
+          Authorization: `Bearer ${authToken}`
+      }
+    })
         .then(response => response.json())
         .then(obj => dispatch(fetchCategorySuccess(obj)))
         .catch(err => console.log(err));
 };
 
-export const fetchGraph = () => dispatch => {
-  fetch(`${API_BASE_URL}/graph/`)
+export const fetchGraph = () => (dispatch,getState) => {
+  const authToken = getState().auth.authToken;
+  return fetch(`${API_BASE_URL}/graph/`, {
+    method: 'GET',
+    headers: {
+        // Provide our auth token as credentials
+        Authorization: `Bearer ${authToken}`
+    }
+
+  })
     .then(response => response.json())
     .then(obj => dispatch(fetchGraphSuccess(obj.coordinates)))
     .catch(err => console.log(err));

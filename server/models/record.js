@@ -8,6 +8,7 @@ const recordSchema = new mongoose.Schema({
   title: { type: String, required: true },
   rating: {type: Number, required: true},
   description: { type: String, required: true },
+  createdAt: {tyep: Date},
   userId:  { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
