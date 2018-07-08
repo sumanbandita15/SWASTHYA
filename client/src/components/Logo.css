@@ -1,9 +1,13 @@
-.App-logo {  
+.App img{
+  display: inline-block;
+}
+
+/* .App-logo {  
   height: 100px;  
 }
 
 .App-title {
   font-size: 1.5em;
-}
+} */
 
 

@@ -44,7 +44,7 @@ class ShowGraph extends Component {
         <input type='date' name = 'FROM' max={this.state.from.max} value={this.state.selectedDateFrom} onChange={e => this.onFromDateChange(e.target.value)}/>
         <label> TO:</label>
         <input type='date' name = 'TO' min="" max="" value={this.state.selectedDateTo} onChange={e => this.onToDateChange(e.target.value)}/> 
-        <input type='button' value="SHOW GRAPH" />
+        <input type='button' value="SHOW GRAPH" />        
       </div>
     );
   }

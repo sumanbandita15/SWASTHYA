@@ -5,10 +5,17 @@ import { connect } from 'react-redux';
 import Dashboard from './components/Dashboard';
 import SignUpForm from './components/SignUpForm';
 import LoginForm from './components/LoginForm';
-import {refreshAuthToken} from './actions/auth';
+import {refreshAuthToken,storeAuthInfo} from './actions/auth';
 import  LandingPage  from './components/LandingPage';
+import {  loadAuthToken }from './local-storage';
 
 class App extends Component {
+  componentDidMount(){
+    const authToken = loadAuthToken();
+    if(!this.props.loggedIn){
+      authToken && storeAuthInfo(authToken,this.props.dispatch);
+    }
+  }
   componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
         // When we are logged in, refresh the auth token periodically
@@ -53,9 +60,7 @@ stopPeriodicRefresh() {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    state
-  }
+  return {  loggedIn: state.auth.currentUser}
 }
 
 export default connect(mapStateToProps)(App);

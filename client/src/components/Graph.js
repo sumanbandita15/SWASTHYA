@@ -21,7 +21,7 @@ class Graph extends Component {
     // ];
     return (
       <div className="Graph">
-        <XYPlot height={500} width={900} xType="ordinal" yDomain={[0,100]}>
+        <XYPlot height={500} width={700} xType="ordinal" yDomain={[0,100]}>
           <XAxis  title="Date" />
           <YAxis  title="Rating" />
           <LineSeries data={data} />

@@ -21,8 +21,7 @@ export class LandingPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-    console.log("Current user Object is ",state.auth.currentUser);
+const mapStateToProps = state => {    
     return {  loggedIn: state.auth.currentUser}
 };
 

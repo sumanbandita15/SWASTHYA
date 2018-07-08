@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './images.png';
+import './Logo.css';
 
 export default function Logo(){
     return (

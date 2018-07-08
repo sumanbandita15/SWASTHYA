@@ -9,7 +9,8 @@
 .container {
   display: grid;
   width: 100%;    
-  grid-template-columns: repeat(45, 1fr);  
+  grid-template-columns: repeat(30, 1fr);  
+  
 }
 
 .FitnessRoutine {
@@ -23,6 +24,11 @@
 }
 
 .Records{
-  grid-column: span 15;
-  float: right;  
+  grid-column: span 8;
+  float: left;  
+}
+
+.Graph{
+  grid-column: span 18;
+  float: left;  
 }
