@@ -7,9 +7,11 @@
 }
 
 .container {
-  display: grid;
+  display: flex;
   width: 100%;    
-  grid-template-columns: repeat(30, 1fr);  
+  flex-direction: row;
+  justify-items: center;
+  justify-content: space-between;
   
 }
 

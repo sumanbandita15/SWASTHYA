@@ -54,7 +54,7 @@ export class Dashboard extends Component {
           <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" onClick={()=>this.renderFitnessRoutinePopUp()} />          
           <input type='button' value="LOGOUT" onClick={()=>{
             clearAuthToken();
-            //this.props.dispatch(clearAuth());
+            this.props.dispatch(clearAuth());
           }} />
         </span>
         <ShowGraph/>
