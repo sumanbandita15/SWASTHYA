@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import { connect } from 'react-redux';
 import Dashboard from './components/Dashboard';
 import SignUpForm from './components/SignUpForm';
 import LoginForm from './components/LoginForm';
+import Logo from './components/Logo';
 import {refreshAuthToken,storeAuthInfo} from './actions/auth';
 import  LandingPage  from './components/LandingPage';
 import {  loadAuthToken }from './local-storage';
@@ -48,7 +49,15 @@ stopPeriodicRefresh() {
   render() {
     return (
       <Router>  
-        <div>   
+        <div className="home">  
+        <Logo />
+        { 
+          !this.props.loggedIn ?
+            <div> 
+              <Link to="/signup">Register</Link>&nbsp;&nbsp;
+              <Link to="/login">Login</Link> 
+            </div>: null
+        }
         <Route exact path="/"  component={LandingPage} />       
           <Route exact path="/signUp"  component={SignUpForm} />            
           <Route exact path="/login"  component={LoginForm} />            

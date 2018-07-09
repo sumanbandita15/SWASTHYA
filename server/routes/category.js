@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => {
 /* ========== GET/READ A SINGLE CATEGORY FOR A USERID ========== */
 router.get('/:id', (req, res, next) => {
   const { id } = req.params;
-  const userId = req.query.userId;
+  const userId =  req.user.userId; 
   //const userId = req.user.id;
   
   if (!(mongoose.Types.ObjectId.isValid(id) || mongoose.Types.ObjectId.isValid(userId))){
@@ -61,17 +61,17 @@ router.get('/:id', (req, res, next) => {
 
 
 /* ========== PUT/UPDATE A CATEGORY ========== */
-router.put('/:id', (req, res, next) => {
-  const { id } = req.params;
-  const userId = req.query.userId;//req.user.id;
+router.put('/', (req, res, next) => {
+  //const { id } = req.params;
+  const userId =  req.user.userId; 
   const { category } = req.body;
 
   
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    const err = new Error('The `id` is not valid');
-    err.status = 400;
-    return next(err);
-  }
+  // if (!mongoose.Types.ObjectId.isValid(id)) {
+  //   const err = new Error('The `id` is not valid');
+  //   err.status = 400;
+  //   return next(err);
+  // }
 
   if (!category) {
     const err = new Error('Missing `category` in request body');
@@ -84,10 +84,26 @@ router.put('/:id', (req, res, next) => {
     err.status = 400;
     return next(err);
   }
+  Promise.all(category.map((cat)=> {
+    const updateCategory = { category:cat.category,userId };
+    return Category.findOneAndUpdate({_id:cat.id,userId}, updateCategory, { new: true });
+  })).then(values => {
+    if (values.length > 0) {
+      res.json({values});
+    } else {
+      next();
+    }
+  }).catch(err => {
+    if (err.code === 11000) {
+      err = new Error('Category name already exists');
+      err.status = 400;
+    }
+    next(err);
+  });
 
-  const updateCategory = { category,userId };
+/*  const updateCategory = { category,userId };
 
-  Category.findOneAndUpdate({_id:id,userId}, updateCategory, { new: true })
+   Category.findOneAndUpdate({_id:category.id,userId}, updateCategory, { new: true })
     .then(result => {
       if (result) {
         res.json(result);
@@ -101,14 +117,14 @@ router.put('/:id', (req, res, next) => {
         err.status = 400;
       }
       next(err);
-    });
+    }); */
 });
 
 
 /* ========== POST/CREATE A CATEGORY ========== */
 router.post('/', (req, res, next) => {
   const { category } = req.body;
-  const userId = req.query.userId;//req.user.id;
+  const userId =  req.user.userId; 
   const newCategory = { category,userId };
 
   /***** Validating Inputs *****/
@@ -126,11 +142,12 @@ router.post('/', (req, res, next) => {
 
   Category.create(newCategory)
     .then(result => {
-      res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
+      //res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
+      res.status(200).json(result);
     })
     .catch(err => {
       if (err.code === 11000) {
-        err = new Error('Category category already exists');
+        err = new Error('Category already exists');
         err.status = 400;
       }
       next(err);

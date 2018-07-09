@@ -2,7 +2,6 @@ import React from 'react';
 import {reduxForm, Field, focus} from 'redux-form';
 import {required, nonEmpty,email, passwordMatch,length, isTrimmed} from './validation';
 import Input from './validation/Input';
-import Logo from './Logo';
 import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
 
@@ -16,18 +15,13 @@ export class SignUpForm extends React.Component {
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(email, password)));
-    }
-    // onSubmit(values) {        
-    //     console.log(values);        
-    //     this.props.history.push(`/dashboard`);
-    // }
+    } 
     render() {
         return (
             <form
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
-                )} className="signUpForm">
-                <Logo />
+                )} className="signUpForm">                
                 <label htmlFor="firstName">First Name: </label>
                 <Field name="firstName" id="firstName" type="text" component={Input} validate={[required, nonEmpty]}/>
                 <label htmlFor="lastName">Last Name: </label>

@@ -8,11 +8,7 @@ import './LoginForm.css';
 export class LoginForm extends React.Component {
     onSubmit(values) {
         return this.props.dispatch(login(values.email, values.password));
-    }
-    /* onSubmit(values) {        
-        console.log(values);        
-        this.props.history.push(`/dashboard`);
-    } */
+    } 
     render() {
         let error;
         if (this.props.error) {

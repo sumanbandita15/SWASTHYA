@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link, Redirect} from 'react-router-dom';
-import Logo from './Logo';
+import {Redirect} from 'react-router-dom';
 import LoginForm from './LoginForm';
+import './LandingPage.css';
 
 export class LandingPage extends React.Component {
   render(){
@@ -12,10 +12,8 @@ export class LandingPage extends React.Component {
       }
 
       return (
-          <div className="home">
-              <Logo />
-              <LoginForm />
-              <Link to="/signup">Register</Link>
+          <div>
+              <LoginForm />              
           </div>
       );
   }

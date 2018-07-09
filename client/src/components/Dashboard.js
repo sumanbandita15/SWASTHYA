@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Logo from './Logo';
 import Category from './Category';
 import Graph from './Graph';
 import ShowGraph from './ShowGraph';
 import Records from './Records';
-import {Link, Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {clearAuthToken   }from '../local-storage';
 import AddFitnessRoutine from './AddFitnessRoutine';
 import AddOrUpdateCategory from './AddOrUpdateCategory';
@@ -46,8 +45,7 @@ export class Dashboard extends Component {
     }
     const {routineModalPopUp,categoryModalPopUp} = this.state;
     return (
-      <div className="dashboard">            
-        <Logo />                            
+      <div className="dashboard">                    
         <Category />        
         <span>
           <input type='button' value="ADD/UPDATE A NEW CATEGORY" onClick={()=>this.renderCategoryPopUp()} />

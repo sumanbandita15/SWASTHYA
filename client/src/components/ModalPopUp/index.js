@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './modalPopUp.css';
 
-export class ModalPopUp extends React.Component{
+export class ModalPopUp extends Component{
   modalClose(){
     this.props.clearPopUpState();
   }

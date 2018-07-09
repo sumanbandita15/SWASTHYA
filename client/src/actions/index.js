@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '../config';
-import {normalizeResponseErrors} from './utils';
+import { promises } from 'fs';
+//import {normalizeResponseErrors} from './utils';
 
 export const FETCH_CATEGORY_SUCCESS = 'FETCH_CATEGORY_SUCCESS';
 export const fetchCategorySuccess = (category) => {
@@ -36,6 +37,45 @@ export const fetchCategory = () => (dispatch,getState) => {
     })
         .then(response => response.json())
         .then(obj => dispatch(fetchCategorySuccess(obj)))
+        .catch(err => console.log(err));
+};
+
+export const updateAndAddCategory = (userChanges) => (dispatch,getState) => {   
+  const authToken = getState().auth.authToken; 
+  let postCategoryResp = null;
+  if(userChanges.newCategory){
+    //do the post
+    postCategoryResp = fetch(`${API_BASE_URL}/category/`, {
+      method: 'POST',
+      headers: {
+          // Provide our auth token as credentials
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json"
+      },
+      body:JSON.stringify({category:userChanges.newCategory})
+    }).then(response => response.json())
+  }
+
+  let putCategoryResp = fetch(`${API_BASE_URL}/category/`, {
+                        method: 'PUT',
+                        headers: {
+                            // Provide our auth token as credentials
+                            Authorization: `Bearer ${authToken}`,
+                            "Content-Type": "application/json"
+                        },
+                        body:JSON.stringify({category:userChanges.categoryUpdates})
+                      }).then(response => response.json());
+  
+    return  Promise.all([postCategoryResp,putCategoryResp])
+        .then(responses => 
+          { 
+            let results = [...responses[1].values];
+
+            if(responses[0]){
+              results.concat(responses[0].result);
+            }
+            dispatch(fetchCategorySuccess(results));
+          })
         .catch(err => console.log(err));
 };
 
