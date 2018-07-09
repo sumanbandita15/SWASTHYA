@@ -2,6 +2,16 @@ import { API_BASE_URL } from '../config';
 import { promises } from 'fs';
 //import {normalizeResponseErrors} from './utils';
 
+
+
+export const FETCH_RECORD_SUCCESS = 'FETCH_RECORD_SUCCESS';
+export const fetchRecordSuccess = (record) => {
+  return {
+    type: FETCH_RECORD_SUCCESS,
+    record
+  }
+};
+
 export const FETCH_CATEGORY_SUCCESS = 'FETCH_CATEGORY_SUCCESS';
 export const fetchCategorySuccess = (category) => {
   return {
@@ -39,6 +49,41 @@ export const fetchCategory = () => (dispatch,getState) => {
         .then(obj => dispatch(fetchCategorySuccess(obj)))
         .catch(err => console.log(err));
 };
+
+export const fetchRecord = () => (dispatch,getState) => {    
+  const authToken = getState().auth.authToken;
+    return  fetch(`${API_BASE_URL}/record/`, {
+      method: 'GET',
+      headers: {
+          // Provide our auth token as credentials
+          Authorization: `Bearer ${authToken}`
+      }
+    })
+        .then(response => response.json())
+        .then(obj => dispatch(fetchRecordSuccess(obj)))
+        .catch(err => console.log(err));
+};
+
+export const addRecord = (record) => (dispatch,getState) => {   
+  const authToken = getState().auth.authToken; 
+      //do the post
+  return fetch(`${API_BASE_URL}/record/`, {
+      method: 'POST',
+      headers: {
+          // Provide our auth token as credentials
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json"
+      },
+      body:JSON.stringify({record})
+    }).then(response => response.json())
+    .then(obj => 
+      { 
+        dispatch(fetchRecordSuccess(obj));
+      })
+    .catch(err => console.log(err));
+}
+
+
 
 export const updateAndAddCategory = (userChanges) => (dispatch,getState) => {   
   const authToken = getState().auth.authToken; 

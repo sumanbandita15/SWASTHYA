@@ -7,7 +7,7 @@ import {Redirect} from 'react-router-dom';
 import {clearAuthToken   }from '../local-storage';
 import AddFitnessRoutine from './AddFitnessRoutine';
 import AddOrUpdateCategory from './AddOrUpdateCategory';
-import { fetchCategory,fetchGraph } from '../actions';
+import { fetchCategory,fetchGraph, fetchRecord } from '../actions';
 import {clearAuth} from '../actions/auth';
 import { connect } from 'react-redux';
 import './Dashboard.css';
@@ -24,6 +24,7 @@ export class Dashboard extends Component {
     if(this.props.loggedIn  ){
       this.props.dispatch(fetchCategory());
       this.props.dispatch(fetchGraph());
+      this.props.dispatch(fetchRecord());
     }    
   }
 

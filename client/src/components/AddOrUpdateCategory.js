@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AddOrUpdateCategory.css';
-import {connect, } from 'react-redux';
+import {connect } from 'react-redux';
 import {updateAndAddCategory }from '../actions';
 
 class AddOrUpdateCategory extends Component {

@@ -1,6 +1,5 @@
 .RecordsComponent{
   border: 1px solid black;  
-  padding-right: 0;
-  float: right;  
   overflow: auto;
+  height:67vh;
 }

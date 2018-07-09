@@ -5,12 +5,14 @@ import {selectCategory} from '../actions';
 
 class Category extends React.Component{        
   onChange(e){
-    this.props.dispatch(selectCategory(e.target.value));
+    const {onChange,dispatch } = this.props;
+    dispatch(selectCategory(e.target.value));
+    onChange && onChange(e.target.value);
   }
 
   render() {        
     const values = this.props.category.map((category) => (
-      <option value={category.value} key={category.id} > {category.category} </option>
+      <option value={category.id} key={category.id} > {category.category} </option>
     ));
     
     return (
