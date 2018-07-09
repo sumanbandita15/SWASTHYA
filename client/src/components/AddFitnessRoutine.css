@@ -1,7 +1,8 @@
+*{
+  box-sizing: border-box;
+}
 .AddFitnessRoutine{
-  border: 0px solid black;  
-  margin-left: 5%;
-  padding: 5px;
+  border: 0px solid black;    
   text-align: left;    
 }
 
@@ -9,4 +10,8 @@
   margin-left: 40%;  
 }
 
- 
+div label{
+  font-weight: bold;  
+}
+
+

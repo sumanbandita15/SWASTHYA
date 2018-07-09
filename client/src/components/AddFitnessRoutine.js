@@ -2,14 +2,11 @@ import {connect } from 'react-redux';
 import React, { Component } from 'react';
 import './AddFitnessRoutine.css';
 import Category from './Category';
-import Title from './Title';
-import Rating from './Rating';
-import Description from './Description';
 import {addRecord }from '../actions';
-import './URL.css';
-import './Title.css';
-import './Rating.css';
-import './Description.css';
+// import './URL.css';
+// import './Title.css';
+// import './Rating.css';
+// import './Description.css';
 
 export  class AddFitnessRoutine extends Component {
   constructor(props){
@@ -36,7 +33,7 @@ export  class AddFitnessRoutine extends Component {
       <div className="AddFitnessRoutine">
           <Category onChange={(val) => {this.onDropDownChange(val)}} />    
           <div className="URL">
-            <label> URL (Optional):</label>
+            <label className="padding"> URL (Optional):</label>
             <input type="url" ref="url"></input>
           </div>
           <div className="Title">

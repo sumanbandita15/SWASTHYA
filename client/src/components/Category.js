@@ -18,7 +18,7 @@ class Category extends React.Component{
     return (
       <span>
         <label> CATEGORY: </label>
-        <select onChange={e => this.onChange(e)}>
+        <select className="DropDown" onChange={e => this.onChange(e)}>
           {values}
         </select>
       </span>      

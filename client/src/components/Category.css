@@ -38,5 +38,9 @@
 .show {display: block;}
 
 span label{
-  font-weight: bold;
+  font-weight: bold;  
+}
+
+.DropDown{
+  margin-left: 20px;
 }

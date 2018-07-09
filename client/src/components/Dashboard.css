@@ -10,27 +10,15 @@
   display: flex;
   width: 100%;    
   flex-direction: row;
-  justify-items: center;
+  /* justify-items: center; */
   justify-content: space-between;
   
 }
 
-.FitnessRoutine {
-  grid-column: span 15;
-  padding-right: 20px;
-}
-
-.Category {
-  grid-column: span 15;  
-  padding-right: 20px;
-}
-
 .Records{
-  grid-column: span 8;
   float: left;  
 }
 
 .Graph{
-  grid-column: span 18;
   float: left;  
 }
