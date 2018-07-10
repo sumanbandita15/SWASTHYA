@@ -1,5 +1,4 @@
 import { API_BASE_URL } from '../config';
-import { promises } from 'fs';
 //import {normalizeResponseErrors} from './utils';
 
 
@@ -117,7 +116,7 @@ export const updateAndAddCategory = (userChanges) => (dispatch,getState) => {
             let results = [...responses[1].values];
 
             if(responses[0]){
-              results.concat(responses[0].result);
+              results = results.concat(responses[0].result);
             }
             dispatch(fetchCategorySuccess(results));
           })

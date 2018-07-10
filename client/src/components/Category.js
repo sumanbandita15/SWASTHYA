@@ -11,9 +11,15 @@ class Category extends React.Component{
   }
 
   render() {        
-    const values = this.props.category.map((category) => (
+    let values = this.props.category.map((category) => (
       <option value={category.id} key={category.id} > {category.category} </option>
     ));
+    const all = <option value="ALL" key="0" > ALL </option>
+    values = [
+      all,
+      ...values
+    ];  
+    
     
     return (
       <span>

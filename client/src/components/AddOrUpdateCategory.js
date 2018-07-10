@@ -11,8 +11,10 @@ class AddOrUpdateCategory extends Component {
 
       let result = {categoryUpdates};
       const newCategory = this.refs["newUserCategory"].value.toString().trim();
+      this.refs["newUserCategory"].value = "";
       if(newCategory){
         result = {...result, newCategory};
+
       }
       this.props.dispatch(updateAndAddCategory(result));
   }
@@ -31,8 +33,7 @@ class AddOrUpdateCategory extends Component {
         <div>
           <input type="button" value="SAVE" onClick={ event => {
             event.stopPropagation();
-            this.saveCategories();}
-            
+            this.saveCategories();}            
             } />
         </div>        
       </div>

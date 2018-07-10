@@ -143,7 +143,7 @@ router.post('/', (req, res, next) => {
   Category.create(newCategory)
     .then(result => {
       //res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
-      res.status(200).json(result);
+      res.status(200).json({result});
     })
     .catch(err => {
       if (err.code === 11000) {
