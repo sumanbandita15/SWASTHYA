@@ -9,41 +9,7 @@ const router = express.Router();
 const passport = require('passport');
 // Protect endpoints using JWT Strategy
 router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }));
-/* ========== GET/READ ALL CATEGORIES FOR A USERID ========== */
-/* router.get('/', (req, res, next) => {   
-  const {category, limit, userId} = req.query;
-  //const userId = req.query.userId;     
-
-  if (!mongoose.Types.ObjectId.isValid(userId)) {
-    const err = new Error('The `id` is not valid');
-    err.status = 400;
-    return next(err);
-  }
-
-  let filter = {userId};
-  let numberOfRecords = 7;
-
-  if(category){
-    filter.category = category;
-  }
-
-  if(limit){
-    numberOfRecords = limit;
-  }
-
-  Record.find(filter).limit(numberOfRecords)
-    .then(result => {
-      if (result) {
-        res.json(result);
-      } else {
-        next();
-      }
-    })
-    .catch(err => {
-      next(err);
-    });
-}); */
-
+/* ========== GET RECORDS ========== */
 router.get('/', (req, res, next) => {  
   const userId = req.user.userId;      
   if (!mongoose.Types.ObjectId.isValid(userId)) {
@@ -66,8 +32,7 @@ router.get('/', (req, res, next) => {
 });
 
 
-
-/* ========== POST/CREATE A CATEGORY ========== */
+/* ========== POST/CREATE RECORDS ========== */
 router.post('/', (req, res, next) => {
   let { record } = req.body;
   const userId =  req.user.userId;
@@ -110,6 +75,29 @@ router.post('/', (req, res, next) => {
     });
 });
 
-
-
+// Delete an item
+/* ========== DELETE/REMOVE A SINGLE ITEM ========== */
+router.delete('/', (req, res, next) => {  
+  const userId = req.user.id;
+  const id = req.body._id;
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    const err = new Error('The `userId` is not valid');
+    err.status = 400;
+    return next(err);
+  }
+  Record.findOneAndRemove({_id: id,userId})
+    .then(() => {
+     return Record.find({userId})
+        .then(result => {
+          if (result) {
+            res.json(result);
+          } else {
+            next();
+          }
+        })       
+    })
+    .catch(err => {
+      next(err);
+    });
+});
 module.exports = router;

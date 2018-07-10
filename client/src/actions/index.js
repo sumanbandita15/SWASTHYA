@@ -95,8 +95,6 @@ export const addRecord = (record) => (dispatch,getState) => {
     .catch(err => console.log(err));
 }
 
-
-
 export const updateAndAddCategory = (userChanges) => (dispatch,getState) => {   
   const authToken = getState().auth.authToken; 
   let postCategoryResp = null;
@@ -151,4 +149,19 @@ export const fetchGraph = ({selectedDateTo,selectedDateFrom}) => (dispatch,getSt
     .catch(err => console.log(err));
 }
 
-
+export const deleteRecord = (id) => (dispatch,getState) => {   
+  const authToken = getState().auth.authToken;       
+  return fetch(`${API_BASE_URL}/record/`, {
+      method: 'DELETE',
+      headers: {
+          // Provide our auth token as credentials
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json"
+      },
+      body:JSON.stringify({_id: id})
+    }).then(response => response.json())
+    .then(obj => { 
+        dispatch(fetchRecordSuccess(obj));
+      })
+    .catch(err => console.log(err));
+}

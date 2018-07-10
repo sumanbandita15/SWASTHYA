@@ -22,7 +22,7 @@ export class Records extends Component {
       <div className="RecordsComponent">
         <h3>RECORDS:</h3>
         {
-          record.map((item, index )=><IndividualRecords key={index} {...item}/> )
+          record.map((item, index )=><IndividualRecords key={index} dispatch={this.props.dispatch} {...item}/> )
         }
       </div>
     );
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
   record: state.recordReducer.record,
   category:state.categoryReducer.category,
   selected: state.categoryReducer.selected,
-  record_to_from_dates: state.ui.graph_to_from_dates
+  record_to_from_dates: state.ui.graph_to_from_dates  
 });
 
 export default connect(mapStateToProps)(Records);

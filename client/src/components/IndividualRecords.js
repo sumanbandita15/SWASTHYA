@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import {deleteRecord} from '../actions';
 import './IndividualRecords.css';
 
 export default class IndividualRecords extends Component {  
-  render() {
-    
-    const {description,createdAt,categoryName} = this.props;
+  onClick(){
+    this.props.dispatch(deleteRecord(this.props.id));
+  }
+  render() {    
+    const {description,createdAt,categoryName} = this.props;       
     return (
       <div className="IndividualRecords">
         <div className="Date">
@@ -19,7 +22,7 @@ export default class IndividualRecords extends Component {
           <label className="labelName">Description: </label>
           <label>{description}</label>            
         </div>
-        <input type='button' value="DELETE" />          
+        <input type='button' value="DELETE" onClick={(e) => this.onClick()}/>          
       </div>
     );
   }
