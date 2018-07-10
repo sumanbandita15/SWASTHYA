@@ -17,8 +17,7 @@ function createAuthToken(user){
 
 const localAuth = passport.authenticate('local', {session: false, failWithError: true});
 
-router.post('/login', localAuth, (req, res) => {
-  console.log('login');
+router.post('/login', localAuth, (req, res) => {  
   const authToken = createAuthToken(req.user);
   res.json({ authToken });
 });

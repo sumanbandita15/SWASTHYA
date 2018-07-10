@@ -32,6 +32,7 @@ const localStrategy = new LocalStrategy({usernameField:'email'},(email, password
       return done(null, user);
     })
     .catch(err => {
+      console.log("got into local strategy" + err);
       if (err.reason === 'LoginError') {
         return done(null, false);
       }

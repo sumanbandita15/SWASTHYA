@@ -42,7 +42,7 @@ export const storeAuthInfo = (authToken, dispatch) => {
     saveAuthToken(authToken);
 };
 
-export const login = (email, password) => dispatch => {
+export const login = (email, password) => dispatch => {    
     dispatch(authRequest());
     return (
         fetch(`${API_BASE_URL}/api/auth/login`, {
@@ -61,6 +61,7 @@ export const login = (email, password) => dispatch => {
             .then(res => res.json())
             .then(({authToken}) => storeAuthInfo(authToken, dispatch))
             .catch(err => {
+                
                 const {code} = err;
                 const message =
                     code === 401

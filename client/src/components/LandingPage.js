@@ -6,8 +6,9 @@ import './LandingPage.css';
 
 export class LandingPage extends React.Component {
   render(){
+      console.log("This is the landing page " + JSON.stringify(this.props.loggedIn));
         // If we are logged in redirect straight to the user's dashboard
-        if (this.props.loggedIn) {
+        if (this.props.currentUser !== null) {
           return <Redirect to="/dashboard" />;
       }
 
@@ -20,7 +21,7 @@ export class LandingPage extends React.Component {
 }
 
 const mapStateToProps = state => {    
-    return {  loggedIn: state.auth.currentUser}
+    return {  currentUser: state.auth.currentUser}
 };
 
 export default connect(mapStateToProps)(LandingPage);
