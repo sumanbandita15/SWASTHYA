@@ -2,6 +2,11 @@ import { API_BASE_URL } from '../config';
 //import {normalizeResponseErrors} from './utils';
 
 
+export const SET_GRAPH_TO_FROM_DATES = 'SET_GRAPH_TO_FROM_DATES';
+export const setGraphDates=({selectedDateTo,selectedDateFrom}) => ({
+  type:SET_GRAPH_TO_FROM_DATES,
+  payload:{selectedDateTo,selectedDateFrom}
+})
 
 export const FETCH_RECORD_SUCCESS = 'FETCH_RECORD_SUCCESS';
 export const fetchRecordSuccess = (record) => {
@@ -123,7 +128,7 @@ export const updateAndAddCategory = (userChanges) => (dispatch,getState) => {
         .catch(err => console.log(err));
 };
 
-export const fetchGraph = () => (dispatch,getState) => {
+export const fetchGraph = ({selectedDateTo,selectedDateFrom}) => (dispatch,getState) => {
   const authToken = getState().auth.authToken;
   return fetch(`${API_BASE_URL}/graph/`, {
     method: 'GET',

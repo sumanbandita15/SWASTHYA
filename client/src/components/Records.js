@@ -19,7 +19,7 @@ export class Records extends Component {
       <div className="RecordsComponent">
         <h3>RECORDS:</h3>
         {
-          record.map(item =><IndividualRecords {...item}/> )
+          record.map((item, index )=><IndividualRecords key={index} {...item}/> )
         }
       </div>
     );

@@ -23,7 +23,7 @@ export class Dashboard extends Component {
   componentDidMount() {  
     if(this.props.loggedIn  ){
       this.props.dispatch(fetchCategory());
-      this.props.dispatch(fetchGraph());
+      //this.props.dispatch(fetchGraph());- will fetch graph based on dates from showgraph component
       this.props.dispatch(fetchRecord());
     }    
   }

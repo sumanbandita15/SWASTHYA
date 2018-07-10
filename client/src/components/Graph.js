@@ -3,10 +3,23 @@ import './Graph.css';
 import '../../node_modules/react-vis/dist/style.css';
 import {XYPlot, LineSeries,XAxis,YAxis} from 'react-vis';
 import {connect} from 'react-redux';
+import moment from "moment";
 
 class Graph extends Component {
   render() {    
-    const data = this.props.coordinates;
+    const {records,graph_to_from_dates} = this.props;
+    //const data = this.props.coordinates;
+    let data=[];
+    if(records.length && graph_to_from_dates){
+      data = records.filter((record,index) =>{
+          let recordDate= moment(record.createdAt);
+          let selectedFromDate = moment(graph_to_from_dates.selectedDateFrom);
+          let selectedToDate =  moment(graph_to_from_dates.selectedDateTo);
+
+
+        return recordDate.isBetween(selectedFromDate,selectedToDate);
+      }).map(record => ({x:moment(record.createdAt).format("MM-DD"), y:record.rating}));
+    }
     // const data = [
     //   {x: '26-7', y: 80},
     //   {x: '28-7', y: 5},
@@ -21,7 +34,7 @@ class Graph extends Component {
     // ];
     return (
       <div className="Graph">
-        <XYPlot height={500} width={700} xType="ordinal" yDomain={[0,100]}>
+        <XYPlot height={500} width={700} xType="ordinal" yDomain={[0,100]}> 
           <XAxis  title="Date" />
           <YAxis  title="Rating" />
           <LineSeries data={data} />
@@ -33,7 +46,8 @@ class Graph extends Component {
 
 
 const mapStateToProps = state => ({
-  coordinates: state.graphReducer.coordinates
+  records: state.recordReducer.record,
+  graph_to_from_dates: state.ui.graph_to_from_dates
 });
 
 export default connect(mapStateToProps)(Graph);

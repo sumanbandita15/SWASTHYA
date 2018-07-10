@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
+import {connect } from 'react-redux';
 import moment from "moment";
+import { setGraphDates } from '../actions';
 
 class ShowGraph extends Component {
+
+  componentDidMount(){
+    this.props.dispatch(setGraphDates({...this.state}));
+  }
+
+  componentDidUpdate(){
+    this.props.dispatch(setGraphDates({...this.state}));
+  }
+
   constructor(){    
     super();
-
     this.state = {            
       selectedDateTo: moment().format("YYYY-MM-DD"),
       selectedDateFrom: moment().subtract(30,'day').format("YYYY-MM-DD"),
@@ -43,13 +53,11 @@ class ShowGraph extends Component {
         <label> FROM: </label>
         <input type='date' name = 'FROM' max={this.state.from.max} value={this.state.selectedDateFrom} onChange={e => this.onFromDateChange(e.target.value)}/>
         <label> TO:</label>
-        <input type='date' name = 'TO' min="" max="" value={this.state.selectedDateTo} onChange={e => this.onToDateChange(e.target.value)}/> 
-        <input type='button' value="SHOW GRAPH" />        
+        <input type='date' name = 'TO' min="" max="" value={this.state.selectedDateTo} onChange={e => this.onToDateChange(e.target.value)}/>         
       </div>
     );
   }
 }
 
 //if the selected date in not within 30 days - tell them to select 
-
-export default ShowGraph;
+export default connect()(ShowGraph);
