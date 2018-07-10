@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   category: [''],
-  selected: ''
+  selected: 'ALL'
 };
 
 const categoryReducer = (state = initialState, action) => {

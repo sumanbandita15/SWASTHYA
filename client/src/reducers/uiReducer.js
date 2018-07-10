@@ -1,9 +1,11 @@
 import {
-  SET_GRAPH_TO_FROM_DATES  
+  SET_GRAPH_TO_FROM_DATES ,
+  SELECTED_CATEGORY_RECRODS
 } from '../actions';
 
 const initialState = {
-  graph_to_from_dates : null
+  graph_to_from_dates : null,
+  selected_category_id : 'all'
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -13,6 +15,13 @@ const uiReducer = (state = initialState, action) => {
       return {
         ...state,
         graph_to_from_dates: action.payload
+      };
+
+    case SELECTED_CATEGORY_RECRODS:
+      return {
+        ...state,
+        selected_category_id: action.selected
+
       };
 
     default: 

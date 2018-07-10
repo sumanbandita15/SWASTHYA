@@ -32,6 +32,14 @@ export const selectCategory = (selected) => {
   }
 };
 
+export const SELECTED_CATEGORY_RECRODS = 'SELECTED_CATEGORY_RECRODS';
+export const selectedCategoryRecords = (selected) => {
+  return {
+    type: SELECTED_CATEGORY_RECRODS,
+    selected
+  }
+};
+
 export const FETCH_GRAPH_SUCCESS = 'FETCH_GRAPH_SUCCESS';
 export const fetchGraphSuccess = (coordinates) => {
   return {

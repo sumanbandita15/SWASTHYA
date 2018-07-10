@@ -7,13 +7,16 @@ export class Records extends Component {
 
   render() {
     let {record, category}=this.props;
-    record = record.map(recordItem => {
+    record = record.map(recordItem => {      
       const recCat = category.find((item)=> item.id === recordItem.categoryId);
       let categoryName = "";
-      categoryName = recCat && recCat.category;
-
+      categoryName = recCat && recCat.category;            
       return {...recordItem, categoryName};
+       
     });
+    if(this.props.selected !== 'ALL'){
+      record = record.filter(item => item.categoryId === this.props.selected);
+    }
     
     return (
       <div className="RecordsComponent">
@@ -28,7 +31,8 @@ export class Records extends Component {
 
 const mapStateToProps = state => ({
   record: state.recordReducer.record,
-  category:state.categoryReducer.category
+  category:state.categoryReducer.category,
+  selected: state.categoryReducer.selected
 });
 
 export default connect(mapStateToProps)(Records);
