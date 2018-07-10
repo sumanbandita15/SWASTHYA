@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import IndividualRecords from './IndividualRecords';
 import './Records.css';
 import {connect } from 'react-redux';
+import {filterRecordsBasedOnDates} from './Graph';
 
 export class Records extends Component {
 
   render() {
-    let {record, category}=this.props;
+    let {record, category,record_to_from_dates,selected}=this.props;
     record = record.map(recordItem => {      
       const recCat = category.find((item)=> item.id === recordItem.categoryId);
       let categoryName = "";
@@ -14,9 +15,8 @@ export class Records extends Component {
       return {...recordItem, categoryName};
        
     });
-    if(this.props.selected !== 'ALL'){
-      record = record.filter(item => item.categoryId === this.props.selected);
-    }
+    
+      record = record.filter(item => (item.categoryId === selected || (selected === 'ALL')) && filterRecordsBasedOnDates(record_to_from_dates)(item));
     
     return (
       <div className="RecordsComponent">
@@ -32,7 +32,8 @@ export class Records extends Component {
 const mapStateToProps = state => ({
   record: state.recordReducer.record,
   category:state.categoryReducer.category,
-  selected: state.categoryReducer.selected
+  selected: state.categoryReducer.selected,
+  record_to_from_dates: state.ui.graph_to_from_dates
 });
 
 export default connect(mapStateToProps)(Records);
