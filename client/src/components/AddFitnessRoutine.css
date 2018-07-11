@@ -12,6 +12,25 @@
 
 div.AddFitnessRoutine label{
   font-weight: bold;  
+  width: 8vw;
+  display: inline-block;
+}
+div.AddFitnessRoutine textarea , div.AddFitnessRoutine select {
+margin-left:10px;
+}
+
+@media only screen and (max-width: 768px) {
+  div.AddFitnessRoutine label{
+    width: 15vw;
+  }
+  div.AddFitnessRoutine input[type="text"], div.AddFitnessRoutine input[type="url"]{
+    display: inline-block;
+      width: 32vw;
+  }
+  div.AddFitnessRoutine textarea{
+    display: inline-block;
+    width: 34vw;
+  }
 }
 
 

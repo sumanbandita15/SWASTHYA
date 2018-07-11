@@ -4,8 +4,8 @@
 
 .AddOrUpdateCategory > .OverFlow{
   background-color: rgb(120, 206, 235);
-  width: 210px;
-  height: 210px;
+  width: 13vw;
+  height: 30vh;
   overflow: auto;
   margin-left: auto;  
   margin-right: auto;
@@ -14,5 +14,15 @@
 
 .AddOrUpdateCategory label{
   font-weight: bold;  
-  
+}
+@media only screen and (max-width: 768px) {
+  .AddOrUpdateCategory > .OverFlow{
+    width: 30vw;
+    height: 30vh;
+  }
+
+  .AddOrUpdateCategory input[type="text"]{    
+    width:25vw;
+  }
+
 }

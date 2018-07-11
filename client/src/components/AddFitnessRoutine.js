@@ -3,10 +3,6 @@ import React, { Component } from 'react';
 import './AddFitnessRoutine.css';
 import Category from './Category';
 import {addRecord }from '../actions';
-// import './URL.css';
-// import './Title.css';
-// import './Rating.css';
-// import './Description.css';
 
 export  class AddFitnessRoutine extends Component {
   constructor(props){
@@ -27,6 +23,7 @@ export  class AddFitnessRoutine extends Component {
     }
 
     this.props.dispatch(addRecord(record));
+    this.props.clearPopUpState();
   }
   render() { 
     return (

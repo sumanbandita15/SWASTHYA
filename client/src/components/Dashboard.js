@@ -72,7 +72,7 @@ export class Dashboard extends Component {
           <ModalPopUp showPopUp={routineModalPopUp || categoryModalPopUp} clearPopUpState={()=> this.clearAllPopUps()}>
             {()=>{
               if(routineModalPopUp){
-                return <AddFitnessRoutine/>;
+                return <AddFitnessRoutine clearPopUpState={()=> this.clearAllPopUps()}/>;
               }
               else if(categoryModalPopUp){
                 return <AddOrUpdateCategory/>;

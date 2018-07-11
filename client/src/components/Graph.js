@@ -29,7 +29,7 @@ class Graph extends Component {
       data = records.filter(record => myFilter(selected)(record) && 
                             filterRecordsBasedOnDates(graph_to_from_dates)(record))
                     .sort(RecordSorter)
-             .map(record => ({x:moment(record.createdAt).format("MM-DD"), y:record.rating}));
+             .map(record => ({x:record.createdAt.toString().substring(5,10), y:record.rating}));
     }    
     return (
       <div className="Graph">

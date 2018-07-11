@@ -7,7 +7,6 @@ const passport = require('passport');
 
 const categoryRouter = require('./routes/category');
 const recordRouter = require('./routes/record');
-//const graphRouter = require('./routes/graph');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./passport/router');
 const localStrategy = require('./passport/local');
@@ -40,7 +39,6 @@ app.use(
 // Mount routers
 app.use('/category', categoryRouter);
 app.use('/record', recordRouter);
-//app.use('/graph', graphRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/auth', loginRouter);
 
