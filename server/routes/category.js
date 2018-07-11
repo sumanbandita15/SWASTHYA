@@ -66,13 +66,7 @@ router.put('/', (req, res, next) => {
   const userId =  req.user.userId; 
   const { category } = req.body;
 
-  
-  // if (!mongoose.Types.ObjectId.isValid(id)) {
-  //   const err = new Error('The `id` is not valid');
-  //   err.status = 400;
-  //   return next(err);
-  // }
-
+ 
   if (!category) {
     const err = new Error('Missing `category` in request body');
     err.status = 400;
