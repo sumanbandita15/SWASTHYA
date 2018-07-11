@@ -88,7 +88,7 @@ router.put('/', (req, res, next) => {
     const updateCategory = { category:cat.category,userId };
     return Category.findOneAndUpdate({_id:cat.id,userId}, updateCategory, { new: true });
   })).then(values => {
-    if (values.length > 0) {
+    if (values.length >= 0) {
       res.json({values});
     } else {
       next();

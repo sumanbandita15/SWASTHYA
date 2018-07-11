@@ -4,6 +4,7 @@ import '../../node_modules/react-vis/dist/style.css';
 import {XYPlot, LineSeries,XAxis,YAxis} from 'react-vis';
 import {connect} from 'react-redux';
 import moment from "moment";
+import {RecordSorter} from "./Records";
 
 export const filterRecordsBasedOnDates = (to_from_date) => (record) =>{
   let recordDate= moment(record.createdAt);
@@ -22,15 +23,17 @@ const myFilter = (selected)=> (record) => {
 
 class Graph extends Component {
   render() {    
-    const {records,graph_to_from_dates,selected} = this.props;    
+    const {records,graph_to_from_dates,selected, containerHeight,containerWidth} = this.props;    
     let data=[];
     if(records.length && graph_to_from_dates){
-      data = records.filter(record => myFilter(selected)(record) && filterRecordsBasedOnDates(graph_to_from_dates)(record))
-        .map(record => ({x:moment(record.createdAt).format("MM-DD"), y:record.rating}));
+      data = records.filter(record => myFilter(selected)(record) && 
+                            filterRecordsBasedOnDates(graph_to_from_dates)(record))
+                    .sort(RecordSorter)
+             .map(record => ({x:moment(record.createdAt).format("MM-DD"), y:record.rating}));
     }    
     return (
       <div className="Graph">
-        <XYPlot height={500} width={700} xType="ordinal" yDomain={[0,100]}> 
+        <XYPlot height={containerHeight} width={containerWidth} xType="ordinal" yDomain={[0,100]}> 
           <XAxis  title="Date" />
           <YAxis  title="Rating" />
           <LineSeries data={data} />

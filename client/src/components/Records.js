@@ -3,6 +3,21 @@ import IndividualRecords from './IndividualRecords';
 import './Records.css';
 import {connect } from 'react-redux';
 import {filterRecordsBasedOnDates} from './Graph';
+import moment from "moment";
+
+export const RecordSorter = (item1,item2) => {
+  let item1Date= moment(item1.createdAt);
+  let item2Date= moment(item2.createdAt);
+
+  if (item1Date.isAfter(item2Date)) {
+    return 1;
+  }
+  if (item2Date.isAfter(item1Date)) {
+    return -1;
+  }
+  // a must be equal to b
+  return 0;
+}
 
 export class Records extends Component {
 
@@ -16,7 +31,11 @@ export class Records extends Component {
        
     });
     
-      record = record.filter(item => (item.categoryId === selected || (selected === 'ALL')) && filterRecordsBasedOnDates(record_to_from_dates)(item));
+      record = record.filter(item => (item.categoryId === selected || (selected === 'ALL')) 
+                && filterRecordsBasedOnDates(record_to_from_dates)(item))
+                .sort(RecordSorter).reverse();
+
+
     
     return (
       <div className="RecordsComponent">

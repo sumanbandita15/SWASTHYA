@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
 import './App.css';
 import { connect } from 'react-redux';
 import Dashboard from './components/Dashboard';
@@ -55,12 +55,11 @@ stopPeriodicRefresh() {
           !this.props.loggedIn ?
             <div> 
               <Link to="/signup">Register</Link>&nbsp;&nbsp;
-              <Link to="/login">Login</Link> 
+              <Link to="/">Login</Link> 
             </div>: null
         }
         <Route exact path="/"  component={LandingPage} />       
-          <Route exact path="/signUp"  component={SignUpForm} />            
-          <Route exact path="/login"  component={LoginForm} />            
+          <Route exact path="/signUp"  component={SignUpForm} />                    
           <Route exact path="/dashboard"  component={Dashboard} />        
         </div>
       </Router>

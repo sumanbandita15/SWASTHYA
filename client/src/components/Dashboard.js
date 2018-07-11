@@ -12,6 +12,7 @@ import {clearAuth} from '../actions/auth';
 import { connect } from 'react-redux';
 import './Dashboard.css';
 import {ModalPopUp} from './ModalPopUp';
+import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 
 export class Dashboard extends Component {
 
@@ -58,10 +59,14 @@ export class Dashboard extends Component {
         </span>
         <ShowGraph/>
         <div className="container"> 
-          <div className="Graph">
-            <Graph />
+          <div className="graphContainer">
+            <AutoSizer>
+            {({ height, width }) => (
+                      <Graph containerWidth={width} containerHeight={height} />
+            )}
+            </AutoSizer>
           </div>
-          <div className="Records">
+          <div className="recordsContainer">
             <Records />           
           </div> 
           <ModalPopUp showPopUp={routineModalPopUp || categoryModalPopUp} clearPopUpState={()=> this.clearAllPopUps()}>
