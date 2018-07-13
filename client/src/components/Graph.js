@@ -10,7 +10,9 @@ export const filterRecordsBasedOnDates = (to_from_date) => (record) =>{
   let recordDate= moment(record.createdAt);
   let selectedFromDate = moment(to_from_date.selectedDateFrom);
   let selectedToDate =  moment(to_from_date.selectedDateTo);
-  return recordDate.isBetween(selectedFromDate,selectedToDate);
+  console.log(JSON.stringify(to_from_date),JSON.stringify(record));
+  console.log("SELECTED TO DATE  " +JSON.stringify(selectedToDate));
+  return recordDate.isBetween(selectedFromDate,selectedToDate);// consider equal to as well 
 }
 
 const myFilter = (selected)=> (record) => {

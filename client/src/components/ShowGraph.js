@@ -4,7 +4,7 @@ import moment from "moment";
 import { setGraphDates } from '../actions';
 
 class ShowGraph extends Component {
-
+  
   componentDidMount(){
     this.props.dispatch(setGraphDates({...this.state}));
   }
@@ -41,7 +41,7 @@ class ShowGraph extends Component {
   //TO DATE CHANGE EVENT
   onToDateChange(e){
     this.setState({
-      selectedDateFrom: moment(e,"YYYY-MM-DD").subtract(30,'day').format("YYYY-MM-DD"),
+      selectedDateFrom: moment(e,"YYYY-MM-DD").subtract(30,'day').format("YYYY-MM-DD"),//().startOf()
       selectedDateTo: e
     });
   }

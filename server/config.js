@@ -6,8 +6,7 @@ module.exports = {
   DATABASE_URL:
         process.env.DATABASE_URL || 'mongodb://dev:dev123@ds233581.mlab.com:33581/swasthya',
   TEST_DATABASE_URL:
-        process.env.TEST_DATABASE_URL ||
-        'mongodb://localhost/swasthya-backend-test',
+        process.env.TEST_DATABASE_URL,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_EXPIRY: process.env.JWT_EXPIRY || '7d'
 };
