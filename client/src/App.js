@@ -49,7 +49,7 @@ stopPeriodicRefresh() {
   render() {
     return (
       <Router>  
-        <div className="home">  
+        <nav role="navigation" className="home">  
         <Logo />
         { 
           !this.props.loggedIn ?
@@ -61,7 +61,7 @@ stopPeriodicRefresh() {
         <Route exact path="/"  component={LandingPage} />       
           <Route exact path="/signUp"  component={SignUpForm} />                    
           <Route exact path="/dashboard"  component={Dashboard} />        
-        </div>
+        </nav>
       </Router>
     );
   }

@@ -47,17 +47,19 @@ export class Dashboard extends Component {
     }
     const {routineModalPopUp,categoryModalPopUp} = this.state;
     return (
-      <div className="dashboard">                    
-        <Category />        
-        <span>
-          <input type='button' value="ADD/UPDATE A NEW CATEGORY" onClick={()=>this.renderCategoryPopUp()} />
-          <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" onClick={()=>this.renderFitnessRoutinePopUp()} />          
-          <input type='button' value="LOGOUT" onClick={()=>{
-            clearAuthToken();
-            this.props.dispatch(clearAuth());
-          }} />
-        </span>
-        <ShowGraph/>
+      <main  role="main" className="dashboard">  
+        <section  className="controls">
+          <Category />        
+          <span>
+            <input type='button' value="ADD/UPDATE A NEW CATEGORY" onClick={()=>this.renderCategoryPopUp()} />
+            <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" onClick={()=>this.renderFitnessRoutinePopUp()} />          
+            <input type='button' value="LOGOUT" onClick={()=>{
+              clearAuthToken();
+              this.props.dispatch(clearAuth());
+            }} />
+          </span>
+          <ShowGraph/>
+        </section>                  
         <div className="container"> 
           <div className="graphContainer">
             <AutoSizer>
@@ -80,7 +82,7 @@ export class Dashboard extends Component {
             }}
             </ModalPopUp>          
         </div>      
-      </div>
+      </main>
     );
   }
 }
