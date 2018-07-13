@@ -6,7 +6,19 @@ Below you will find some information on how to perform common tasks.<br>
 
 - [Swasthya](#Swasthya)
   - [About](#About)
+  - [Registration](#Registration)
+  - [Dashboard](#Dashboard)
+      - [Category DropDown](#Category-DropDown)
+      - [Add Category Button](#Add-Category-Button)
+      - [Add Fitness Routine Button](#Add-Fitness-Routine-Button)
+      - [Logout Button](#Logout-Button)
+      - [Date Pickers](#Date-Pickers)
+      - [Graph](#Graph)     
+      - [Records](#Records)     
+      - [Delete Button](#Delete-Button)
+- [Tech Stack](#tech-stack)
 - [Folder Structure](#folder-structure)
+- [Link To Deployed Version](#link-to-deployed-version)
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
   - [npm test](#npm-test)  
@@ -48,8 +60,71 @@ Below you will find some information on how to perform common tasks.<br>
 
   Swasthya is aimed at helping users determine which fitness routine helps the user the most. 
   
+### Registration
+  User can register using registration page. If everything goes well the user will be redirected to the dash board. If the user is a registered used, he/she can opt for login page by cilcking the `Login` link
+![Registration Page](/Registration.png)
 
-## Folder Structure
+### Login
+  User can login using login page. If everything goes well the user will be redirected to the dash board. If the user is not a registered used, he/she has to register first in order to use the login page.The login button will only be enabled when user make any changes to the input fields.
+![Login Page](/login.png)
+
+### Dashboard
+  Below is a sample dashboard of a user with some data.<br>
+  ![Dashboard Page](/Dashboard.png)
+  Dashboard has few controls :-
+
+#### Category DropDown
+The Category Drop Down lets the user select a category whose data users wants to view.This usre has Yoga, Breathing Exercises and Jogging as three categories.On category change user will notice change in graph(representing just coordinates just from the selected category) and records being displayed just from the selected category.
+![Category DropDown](/Category_DropDown.png)
+
+#### Add Category Button
+On clicking Add Category Button in the dash board,the user can see a Category modal pop up. This modal will let user see all the existing category and modify them if needed, and also let the user add a new category. 
+![Add Category](/Add_Category.png)
+
+#### Add Fitness Routine Button
+A user is able to add daily fitness record by clicking Add Fitness Routine Button. On clicking the button a modal pop up appears which has a few input fields.Except for `URL` all other fields are `REQUIRED` fields. `Rating` can range from 0 to 100. If user enters all the values properly the records appears in the `Records` section.
+![Add Fitness Routine](/Add_Fitness_Routine.png)
+
+#### Logout Button
+Logout Button logs user out of Swasthya
+![Logout Button](/Logout_Button.png)
+
+#### Date Pickers
+Date pickes are important part of Swasthya application. User needs to choose dates to be able to render graph and records. By default the date pickers display graph and records from past 30 days. 
+![Date Pickers](/Date.png)
+
+
+#### Graph
+Graph component is Swasthya displays users progress. By default, user would be able to see the graphical representation of data of past 30 days. X- axis represents dates and Y-axis represents user rating. <br>
+If a category is selected the graph should display records only for that category. <br>
+When dates are changed the graphy should display records for the selected dates.  
+![Graph](/Graph.png)
+
+
+#### Records
+Records section displays user's records for the time period selected by the date picker. On change in category selection, records display only records for that particular category. Each record is provided with a delete button.
+![Records](/Records.png)
+
+#### Delete Button
+The `DELETE` button is click can be used to delete the unwanted records by the user. On deltion, graph would change to accomodate the delete action.
+![Delete Button](/Delete.png)
+
+## Tech Stack
+
+#### Front End
+  - React/Redux <br>
+  - css
+#### Server Side
+  - Node.js/Express
+#### Database
+  - MongoDB/Mongoose
+#### Tests 
+  - Mocha/ Chai/ chai-http
+  - Enzyme/Jest
+#### Authentication 
+  - JWT/bcryptjs/passport
+
+
 
 After creation, your project should look like this:
 
@@ -105,6 +180,9 @@ Only files inside `public` can be used from `public/index.html`.<br>
 
 You can, however, create more top-level directories.<br>
 They will not be included in the production build so you can use them for things like documentation.
+
+## Link to Deployed Version
+  [https://salty-forest-73312.herokuapp.com/](https://salty-forest-73312.herokuapp.com/)
 
 ## Available Scripts
 
