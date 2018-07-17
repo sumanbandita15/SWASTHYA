@@ -11,6 +11,21 @@ export const setAuthToken = authToken => ({
     authToken
 });
 
+export const SET_REG_START = 'SET_REG_START';
+export const setRegStart = () => ({
+    type: SET_REG_START,
+});
+
+export const SET_REG_SUCCESS = 'SET_REG_SUCCESS';
+export const setRegSuccess = () => ({
+    type: SET_REG_SUCCESS,
+});
+
+export const SET_REG_FAILURE = 'SET_REG_SUCCESS';
+export const setRegFailure = () => ({
+    type: SET_REG_FAILURE,
+});
+
 export const CLEAR_AUTH = 'CLEAR_AUTH';
 export const clearAuth = () => ({
     type: CLEAR_AUTH

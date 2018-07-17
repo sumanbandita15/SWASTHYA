@@ -91,6 +91,7 @@ router.post('/', (req, res, next) => {
       if (err.code === 11000) {
         err = new Error('The email already exists');
         err.status = 400;
+        err.reason='ValidationError';
       }
       next(err);
     });

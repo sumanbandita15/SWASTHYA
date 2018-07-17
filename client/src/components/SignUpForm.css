@@ -2,3 +2,6 @@
   text-align: center;
   padding: 50px;
 }
+.submitting{
+  opacity: 0.5;
+}

@@ -3,14 +3,18 @@ import {
   CLEAR_AUTH,
   AUTH_REQUEST,
   AUTH_SUCCESS,
-  AUTH_ERROR
+  AUTH_ERROR,
+  SET_REG_START,
+  SET_REG_SUCCESS,
+  SET_REG_FAILURE
 } from '../actions/auth';
 
 const initialState = {
   authToken: null, 
   currentUser: null,
   loading: false,
-  error: null
+  error: null,
+  regInProgress:false
 };
 
 export default function reducer(state = initialState, action) {
@@ -23,7 +27,20 @@ export default function reducer(state = initialState, action) {
           authToken: null,
           currentUser: null
       });
-  } else if (action.type === AUTH_REQUEST) {
+  }else if (action.type === SET_REG_START) {
+    return Object.assign({}, state, {
+        regInProgress: true
+    })
+  }else if (action.type === SET_REG_FAILURE) {
+    return Object.assign({}, state, {
+        regInProgress: false
+    })
+  }
+  else if (action.type === SET_REG_SUCCESS) {
+        return Object.assign({}, state, {
+            regInProgress: false
+        })}
+   else if (action.type === AUTH_REQUEST) {
       return Object.assign({}, state, {
           loading: true,
           error: null

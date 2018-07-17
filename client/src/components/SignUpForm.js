@@ -4,6 +4,7 @@ import {required, nonEmpty,email, passwordMatch,length, isTrimmed} from './valid
 import Input from './validation/Input';
 import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
+import {connect } from 'react-redux';
 
 import './SignUpForm.css';
 const passwordLength = length({min: 10, max: 72});
@@ -12,17 +13,26 @@ export class SignUpForm extends React.Component {
     onSubmit(values) {
         const {email, password, firstName, lastName} = values;
         const user = {email, password, firstName, lastName};
-        return this.props
-            .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(email, password)))
-            .then(()=> this.props.history.push("/dashboard") );
+        const {dispatch,history} = this.props;
+        return registerUser(user,history,dispatch);
     } 
     render() {
+        const reqInProcess = (this.props.loginProgress || this.props.regInProgress);
+        let error;
+        if (this.props.error) {
+            error = (
+                <div className="form-error" aria-live="polite">
+                    {this.props.error}
+                </div>
+            );
+        }
         return (
             <form role="registration form" 
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
-                )} className="signUpForm">                
+                )} className={`signUpForm${reqInProcess ? ' submitting':''}`}>  
+                {reqInProcess ?<div className="loader"></div> : null}  
+                {error}            
                 <label htmlFor="firstName">First Name: </label>
                 <Field name="firstName" id="firstName" type="text" component={Input} validate={[required, nonEmpty]}/>
                 <label htmlFor="lastName">Last Name: </label>
@@ -33,15 +43,19 @@ export class SignUpForm extends React.Component {
                 <Field name="password" id="password" component={Input} type="password" validate={[required,nonEmpty,passwordLength, isTrimmed]}/>
                 <label htmlFor="confirmPassword">Confirm Password: </label>
                 <Field name="confirmPassword" id="confirmPassword" component={Input} type="password" validate={[required,nonEmpty,passwordMatch]}/>                               
-
                 <button type="submit">Sign Up</button>
             </form>
         );
     }
 }
 
+const mapStateToProps = state => ({
+    loginProgress: state.auth.loading,
+    regInProgress:state.auth.regInProgress
+  });
+
 export default reduxForm({
     form: 'signUp',
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('signUp', Object.keys(errors)[0]))
-})(SignUpForm);
+})(connect(mapStateToProps)(SignUpForm));

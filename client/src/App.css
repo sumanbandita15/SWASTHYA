@@ -16,3 +16,29 @@ input:hover, select:hover{
   opacity: 0.9;
   /* font-weight: bold; */
 }
+.form-error{
+  color:red;
+}
+.loader {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 0.4s linear infinite; /* Safari */
+  animation: spin 0.4s linear infinite;
+  margin: auto;
+  position: relative;
+  top: -21px;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
