@@ -52,8 +52,7 @@ export class Dashboard extends Component {
           <Category />        
           <span>
             <input type='button' value="ADD/UPDATE A NEW CATEGORY" onClick={()=>this.renderCategoryPopUp()} />
-            <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" onClick={()=>this.renderFitnessRoutinePopUp()} />          
-            <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" onClick={()=>this.renderFitnessRoutinePopUp()} />          
+            <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" onClick={()=>this.renderFitnessRoutinePopUp()} />                      
             <input type='button' value="LOGOUT" onClick={()=>{
               clearAuthToken();
               this.props.dispatch(clearAuth());

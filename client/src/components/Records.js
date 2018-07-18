@@ -14,8 +14,7 @@ export const RecordSorter = (item1,item2) => {
   }
   if (item2Date.isAfter(item1Date)) {
     return -1;
-  }
-  // a must be equal to b
+  }  
   return 0;
 }
 
