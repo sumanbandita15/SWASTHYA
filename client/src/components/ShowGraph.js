@@ -30,8 +30,7 @@ class ShowGraph extends Component {
 
   }
   // FROM DATE CHANGE EVENT 
-  onFromDateChange(e){    
-    //console.log(moment(e,"YYYY-MM-DD"));
+  onFromDateChange(e){        
     this.setState({
       selectedDateFrom: moment(e,"YYYY-MM-DD HH:mm:ss").startOf('day').format("YYYY-MM-DD HH:mm:ss"),
       selectedDateTo: moment(e,"YYYY-MM-DD HH:mm:ss").add(30,'day').endOf('day').format("YYYY-MM-DD HH:mm:ss")//moment(e,"YYYY-MM-DD").add(30,'day').endOf('day').format("YYYY-MM-DD")

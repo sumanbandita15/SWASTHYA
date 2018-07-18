@@ -15,14 +15,15 @@
 .AddOrUpdateCategory label{
   font-weight: bold;  
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 768px) {  
   .AddOrUpdateCategory > .OverFlow{
-    width: 30vw;
+    width: 35vw;
     height: 30vh;
+    overflow: auto;
   }
 
-  .AddOrUpdateCategory input[type="text"]{    
-    width:25vw;
+  .AddOrUpdateCategory input[type="text"]{        
+    width: 90px;
   }
 
 }

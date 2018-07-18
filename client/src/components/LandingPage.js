@@ -5,8 +5,7 @@ import LoginForm from './LoginForm';
 import './LandingPage.css';
 
 export class LandingPage extends React.Component {
-  render(){
-      console.log("This is the landing page " + JSON.stringify(this.props.loggedIn));
+  render(){      
         // If we are logged in redirect straight to the user's dashboard
         if (this.props.currentUser !== null) {
           return <Redirect to="/dashboard" />;
