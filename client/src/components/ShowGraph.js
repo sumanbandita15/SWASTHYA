@@ -31,18 +31,18 @@ class ShowGraph extends Component {
   }
   // FROM DATE CHANGE EVENT 
   onFromDateChange(e){    
-    console.log(moment(e,"YYYY-MM-DD"));
+    //console.log(moment(e,"YYYY-MM-DD"));
     this.setState({
-      selectedDateFrom: e,
-      selectedDateTo: moment(e,"YYYY-MM-DD").add(30,'day').format("YYYY-MM-DD")
+      selectedDateFrom: moment(e,"YYYY-MM-DD HH:mm:ss").startOf('day').format("YYYY-MM-DD HH:mm:ss"),
+      selectedDateTo: moment(e,"YYYY-MM-DD HH:mm:ss").add(30,'day').endOf('day').format("YYYY-MM-DD HH:mm:ss")//moment(e,"YYYY-MM-DD").add(30,'day').endOf('day').format("YYYY-MM-DD")
     });
   }
 
   //TO DATE CHANGE EVENT
-  onToDateChange(e){
-    this.setState({
-      selectedDateFrom: moment(e,"YYYY-MM-DD").subtract(30,'day').format("YYYY-MM-DD"),//().startOf()
-      selectedDateTo: e
+  onToDateChange(e){    
+    this.setState({      
+      selectedDateFrom: moment(e,"YYYY-MM-DD").endOf('day').subtract(30,'day').format("YYYY-MM-DD"),//().startOf()
+      selectedDateTo: moment(e,"YYYY-MM-DD HH:mm:ss").endOf('day').format("YYYY-MM-DD HH:mm:ss")
     });
   }
 
@@ -51,9 +51,9 @@ class ShowGraph extends Component {
     return (
       <div>
         <label> FROM: </label>
-        <input type='date' name = 'FROM' max={this.state.from.max} value={this.state.selectedDateFrom} onChange={e => this.onFromDateChange(e.target.value)}/>
+        <input type='date' name = 'FROM' max={this.state.from.max} value={moment(this.state.selectedDateFrom).format("YYYY-MM-DD")} onChange={e => this.onFromDateChange(e.target.value)}/>
         <label> TO:</label>
-        <input type='date' name = 'TO' min="" max="" value={this.state.selectedDateTo} onChange={e => this.onToDateChange(e.target.value)}/>         
+        <input type='date' name = 'TO' min="" max="" value={moment(this.state.selectedDateTo).format("YYYY-MM-DD")} onChange={e => this.onToDateChange(e.target.value)}/>         
       </div>
     );
   }
