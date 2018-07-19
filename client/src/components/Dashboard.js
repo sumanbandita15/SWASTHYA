@@ -5,7 +5,7 @@ import ShowGraph from './ShowGraph';
 import Records from './Records';
 import {Redirect} from 'react-router-dom';
 import {clearAuthToken   }from '../local-storage';
-import AddFitnessRoutine from './AddFitnessRoutine';
+import AddFitnessRoutineForm from './AddFitnessRoutineForm';
 import AddOrUpdateCategory from './AddOrUpdateCategory';
 import { fetchCategory,fetchGraph, fetchRecord } from '../actions';
 import {clearAuth} from '../actions/auth';
@@ -49,7 +49,7 @@ export class Dashboard extends Component {
     return (
       <main  role="main" className="dashboard">  
         <section  className="controls">
-          <Category />        
+          <Category value={this.props.selected}/>        
           <span>
             <input type='button' value="ADD/UPDATE A NEW CATEGORY" onClick={()=>this.renderCategoryPopUp()} />
             <input type='button' value="ENTER TODAY'S FITNESS ROUTINE" onClick={()=>this.renderFitnessRoutinePopUp()} />                      
@@ -74,7 +74,7 @@ export class Dashboard extends Component {
           <ModalPopUp showPopUp={routineModalPopUp || categoryModalPopUp} clearPopUpState={()=> this.clearAllPopUps()}>
             {()=>{
               if(routineModalPopUp){
-                return <AddFitnessRoutine clearPopUpState={()=> this.clearAllPopUps()}/>;
+                return <AddFitnessRoutineForm clearPopUpState={()=> this.clearAllPopUps()}/>;
               }
               else if(categoryModalPopUp){
                 return <AddOrUpdateCategory/>;
@@ -87,7 +87,9 @@ export class Dashboard extends Component {
   }
 }
 const mapStateToProps = (state) => {  
-    return {  loggedIn: state.auth.currentUser}  
+    return {  loggedIn: state.auth.currentUser,
+      selected: state.categoryReducer.selected
+  }  
 }
 
 export default connect(mapStateToProps)(Dashboard);

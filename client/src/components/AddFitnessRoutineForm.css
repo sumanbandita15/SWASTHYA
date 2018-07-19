@@ -1,0 +1,22 @@
+.addFitnessRoutineUrl div.form-input,.addFitnessRoutineTitle div.form-input,.addFitnessRoutineRating div.form-input{
+  display: inline;
+}
+
+button{
+  display: block;
+  margin: auto;
+}
+
+
+@media only screen and (max-width: 768px) {  
+  .addFitnessRoutine > .OverFlow{
+    width: 80%;
+    height: 30vh;
+    overflow: auto;
+  }
+
+  .addFitnessRoutine input[type="text"], .description{        
+    width: 80%;
+  }
+
+}

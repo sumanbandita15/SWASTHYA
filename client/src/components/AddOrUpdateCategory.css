@@ -4,7 +4,7 @@
 
 .AddOrUpdateCategory > .OverFlow{
   background-color: rgb(120, 206, 235);
-  width: 13vw;
+  width: 25vw;
   height: 30vh;
   overflow: auto;
   margin-left: auto;  
